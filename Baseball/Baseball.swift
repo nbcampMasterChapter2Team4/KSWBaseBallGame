@@ -12,6 +12,8 @@ struct Baseball {
     let numberRange = 0...9
     
     func start() {
+        print("게임을 시작합니다. 숫자를 입력하세요.")
+        
         let answer = makeAnswer()
         
         // 정답을 맞출 때까지 반복
