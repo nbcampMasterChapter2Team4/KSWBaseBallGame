@@ -8,8 +8,8 @@
 import Foundation
 
 // 게임 실행하면 보이는 메뉴
-enum Menu: String {
-    case start = "1", viewRecord = "2", exit = "3"
+enum Menu: Int {
+    case start = 1, viewRecord, exit
     
     var title: String {
         switch self {

@@ -19,7 +19,7 @@ func play() {
         showHomeScreen()
         
         input = readLine()
-        menu = Menu(rawValue: input!)
+        menu = Menu(rawValue: Int(input!) ?? 0)
         
         switch menu {
         case .start:
