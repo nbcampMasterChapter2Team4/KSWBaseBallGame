@@ -1,5 +1,5 @@
 //
-//  Baseball.swift
+//  BaseballGame.swift
 //  Baseball
 //
 //  Created by 권순욱 on 3/10/25.
@@ -7,21 +7,31 @@
 
 import Foundation
 
-struct Baseball {
+struct BaseballGame {
     let numberOfDigits = 3
     let numberRange = 0...9
     
-    func start() {
-        print("게임을 시작합니다. 숫자를 입력하세요.")
+    var tryCount = 0
+    var gameRecords: [Int] = []
+    
+    mutating func start() {
+        print("게임을 시작합니다. \(numberOfDigits)자리 숫자를 입력하세요.")
         
         let answer = makeAnswer()
         
         // 정답을 맞출 때까지 반복
-        var result: Bool
+        var isCorrect: Bool
         repeat {
             let input = readLine()
-            result = compare(input, with: answer)
-        } while !result
+            isCorrect = compare(input, with: answer)
+            tryCount += 1
+        } while !isCorrect
+        
+        // 정답을 맞췄다면 기록 생성 및 트라이 횟수 초기화
+        if isCorrect {
+            gameRecords.append(tryCount)
+            tryCount = 0
+        }
     }
     
     // 정답 생성(임의 숫자 배열)
@@ -45,6 +55,7 @@ struct Baseball {
             return false
         }
         
+        // MARK: - 나중에 지우세요!!
         print("input: \(input)")
         print("answer: \(answer)")
         
@@ -94,9 +105,9 @@ struct Baseball {
     // 입력 값 검증 헬퍼 메서드
     private func validateInput(_ inputArray: [Int]) -> ValidationResult {
         switch inputArray {
-        case let x where x.count != 3:
+        case let x where x.count != numberOfDigits:
             return .notThreeDigit
-        case let x where x.contains(where: { $0 < 1 || $0 > 9 }):
+        case let x where x.contains(where: { $0 < numberRange.lowerBound || $0 > numberRange.upperBound }):
             return .notNumberFromOneToNine
         case let x where Set(x).count != x.count:
             return .duplicatedNumber
