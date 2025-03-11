@@ -9,7 +9,7 @@ import Foundation
 
 struct Baseball {
     let numberOfDigits = 3
-    let numberRange = 1...9
+    let numberRange = 0...9
     
     func start() {
         let answer = makeAnswer()
@@ -25,10 +25,14 @@ struct Baseball {
     // 정답 생성(임의 숫자 배열)
     private func makeAnswer() -> [Int] {
         var numbers: [Int] = []
-        for _ in 0..<numberOfDigits {
+        
+        while numbers.count != numberOfDigits {
             let number = Int.random(in: numberRange)
+            if number == 0, numbers.isEmpty { continue } // 숫자 첫 자리가 0이면 안됨
+            if numbers.contains(number) { continue } // 같은 숫자가 중복되면 안됨
             numbers.append(number)
         }
+        
         return numbers
     }
     
@@ -38,6 +42,9 @@ struct Baseball {
             print("입력 값이 없습니다.")
             return false
         }
+        
+        print("input: \(input)")
+        print("answer: \(answer)")
         
         // 입력 값을 정수 배열로 변환(주의: 사용자 입력 값 1A2 -> [1, 2])
         let inputArray = Array(input).compactMap { Int(String($0)) }
