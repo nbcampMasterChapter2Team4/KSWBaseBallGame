@@ -23,7 +23,7 @@ func play() {
         case Menu.start.rawValue:
             game.start()
         case Menu.viewRecord.rawValue:
-            showRecord(records: game.gameRecords) // 질문: BaseballGame에서 gameRecords를 가져오는 시점은?
+            showRecord(records: game.gameRecords) // 질문: BaseballGame에서 gameRecords를 가져오는 시점은? 답: 함수 호출 시점
         case Menu.exit.rawValue:
             print("See you next time!")
             game.gameRecords = [] // 게임 기록 초기화

@@ -65,7 +65,7 @@ struct BaseballGame {
         // 입력 값이 기준에 맞는지 검증
         let validatedResult = validateInput(inputArray)
         guard validatedResult == .valid else {
-            print(validatedResult.rawValue)
+            print(validatedResult.description)
             return false
         }
         
@@ -106,9 +106,9 @@ struct BaseballGame {
     private func validateInput(_ inputArray: [Int]) -> ValidationResult {
         switch inputArray {
         case let x where x.count != numberOfDigits:
-            return .notThreeDigit
+            return .notThreeDigit(numberOfDigits)
         case let x where x.contains(where: { $0 < numberRange.lowerBound || $0 > numberRange.upperBound }):
-            return .notNumberFromOneToNine
+            return .notNumberFromOneToNine(numberRange)
         case let x where Set(x).count != x.count:
             return .duplicatedNumber
         default:
