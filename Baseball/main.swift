@@ -26,6 +26,7 @@ func play() {
             showRecord(records: game.gameRecords) // 질문: BaseballGame에서 gameRecords를 가져오는 시점은?
         case Menu.exit.rawValue:
             print("See you next time!")
+            game.gameRecords = [] // 게임 기록 초기화
         default:
             print("Invalid input. Please try again.")
         }
