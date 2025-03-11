@@ -13,9 +13,13 @@ struct Baseball {
     
     func start() {
         let answer = makeAnswer()
-        let input = readLine()
         
-        compareInputWithAnswer(input, with: answer)
+        // 정답을 맞출 때까지 반복
+        var result: Bool
+        repeat {
+            let input = readLine()
+            result = compare(input, with: answer)
+        } while !result
     }
     
     // 정답 생성(임의 숫자 배열)
@@ -29,10 +33,10 @@ struct Baseball {
     }
     
     // 플레이어 입력 값과 정답 비교
-    private func compareInputWithAnswer(_ input: String?, with answer: [Int]) {
+    private func compare(_ input: String?, with answer: [Int]) -> Bool {
         guard let input else {
             print("입력 값이 없습니다.")
-            return
+            return false
         }
         
         // 입력 값을 정수 배열로 변환(주의: 사용자 입력 값 1A2 -> [1, 2])
@@ -42,7 +46,7 @@ struct Baseball {
         let validatedResult = validateInput(inputArray)
         guard validatedResult == .valid else {
             print(validatedResult.rawValue)
-            return
+            return false
         }
         
         var ballCount = 0
@@ -62,14 +66,19 @@ struct Baseball {
         switch (ballCount, strikeCount) {
         case (0, 0):
             print("아웃!")
+            return false
         case (0, 3):
             print("홈런!")
+            return true
         case (_, 0):
             print("\(ballCount)볼")
+            return false
         case (0, _):
             print("\(strikeCount)스트라이크")
+            return false
         default:
             print("\(ballCount)볼 \(strikeCount)스트라이크 ")
+            return false
         }
     }
     
