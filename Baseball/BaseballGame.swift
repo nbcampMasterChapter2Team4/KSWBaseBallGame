@@ -55,9 +55,10 @@ struct BaseballGame {
             return false
         }
         
-        // MARK: - 나중에 지우세요!!
-        print("input: \(input)")
-        print("answer: \(answer)")
+#if DEBUG
+        print("player input: \(input)")
+        print("correct answer: \(answer)")
+#endif
         
         // 입력 값을 정수 배열로 변환(주의: 사용자 입력 값 1A2 -> [1, 2])
         let inputArray = Array(input).compactMap { Int(String($0)) }
