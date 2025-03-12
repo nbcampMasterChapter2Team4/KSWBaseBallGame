@@ -9,20 +9,21 @@
   - [Technologies](#technologies)
 - [[2] Getting Started](#2-getting-started)
   - [Installation](#installation)
-- [[3] Usage](#3-usage)
+- [[3] Game Rules](#3-game-rules)
 - [[4] Contribution](#4-contribution)
 - [[5] Acknowledgement](#5-acknowledgement)
 - [[6] Contact](#6-contact)
 - [[7] License](#7-license)
 
 # [1] About the Project
-- 사용자가 메모를 추가, 삭제하고 저장할 수 있는 간단한 리스트 앱
-- UITableView와 UserDefaults를 활용하여 데이터 관리와 리스트 UI 구현을 연습
+- 숫자 야구 게임은 1명이 즐길 수 있는 추리 게임으로, 컴퓨터가 설정한 3자리의 숫자를 맞히는 것이 목표.
+- 각 자리의 숫자와 위치가 모두 맞으면 '스트라이크', 숫자만 맞고 위치가 다르면 '볼'로 판정. 예) 정답이 123일 때 132를 추리하면 1스트라이크 2볼.
+>
 
 ## Features
-- *메모 추가: "+" 버튼을 눌러 새로운 메모를 추가. 추가된 메모는 리스트에 표시*
-- *메모 삭제: 리스트에서 특정 메모를 스와이프하여 삭제*
-- *데이터 저장: 앱 종료 후에도 메모 리스트가 유지되도록 UserDefaults를 활용해 데이터 저장 및 불러오기*
+- *1. 게임 시작: 정답을 맞추면 다시 타이틀 화면으로 복귀함. 게임 중간에 빠져나오려면 qqq 또는 QQQ 입력.*
+- *2. 게임 기록 보기: 정답을 맞춘 게임을 게임 1회로 간주하고, 각 게임마다 몇 번의 시도를 했었는지 확인 가능*
+- *3. 게임 끝내기: 게임을 끝내고, 기록을 초기화함.*
 
 ## Technologies
 - [Swift](https://www.swift.org) 5.0
@@ -32,19 +33,20 @@
 ## Installation
 - Repository 클론
 ```bash
-git clone https://github.com/witt1e/Memo
+git clone https://github.com/nbcampMasterChapter2Team4/KSWBaseBallGame.git
 ```
 
-# [3] Usage
-- 메모 추가: "+" 버튼을 눌러 새로운 메모를 추가
-- 메모 삭제: 리스트에서 메모를 스와이프하여 삭제
-- 데이터 저장: 메모 추가 또는 삭제 시 자동 저장
+# [3] Game Rules
+- 정답은 3자리 정수로 랜덤 생성되며, 맨 앞에는 0이 오지 않고, 숫자는 중복되지 않습니다. 예) 123 (O), 012 (X), 450 (O), 112 (X)
+- 플레이어도 0~9 사이의 3자리 정수를 입력해야 합니다.
+- 각 자리의 숫자와 위치가 모두 맞으면 '스트라이크', 숫자만 맞고 위치가 다르면 '볼'입니다.
+- 3자리 모두 맞으면 '홈런'(즉, 정답), 3자리 모두 틀리면 '아웃'입니다.
 
 # [4] Contribution
-사전캠프 3조
+4조(i구 4람살려)
 
 # [5] Acknowledgement
-- [Tableview dynamic height](https://stackoverflow.com/questions/30494702/dynamic-height-issue-for-uitableview-cells-swift)
+- https://stackoverflow.com/questions/51300121/how-to-make-a-swift-enum-with-associated-values-equatable
 
 # [6] Contact
 - 📋 [https://witt1e.github.io/contact](https://witt1e.github.io/contact)
