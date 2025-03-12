@@ -33,19 +33,20 @@
 ## Installation
 - Repository 클론
 ```bash
-git clone https://github.com/witt1e/Memo
+git clone https://github.com/nbcampMasterChapter2Team4/KSWBaseBallGame.git
 ```
 
 # [3] Game Rules
-- 메모 추가: "+" 버튼을 눌러 새로운 메모를 추가
-- 메모 삭제: 리스트에서 메모를 스와이프하여 삭제
-- 데이터 저장: 메모 추가 또는 삭제 시 자동 저장
+- 정답은 3자리 정수로 랜덤 생성되며, 맨 앞에는 0이 오지 않고, 숫자는 중복되지 않습니다. 예) 123 (O), 012 (X), 450 (O), 112 (X)
+- 플레이어도 0~9 사이의 3자리 정수를 입력해야 합니다.
+- 각 자리의 숫자와 위치가 모두 맞으면 '스트라이크', 숫자만 맞고 위치가 다르면 '볼'입니다.
+- 3자리 모두 맞으면 '홈런'(즉, 정답), 3자리 모두 틀리면 '아웃'입니다.
 
 # [4] Contribution
 4조(i구 4람살려)
 
 # [5] Acknowledgement
-- [Tableview dynamic height](https://stackoverflow.com/questions/30494702/dynamic-height-issue-for-uitableview-cells-swift)
+- https://stackoverflow.com/questions/51300121/how-to-make-a-swift-enum-with-associated-values-equatable
 
 # [6] Contact
 - 📋 [https://witt1e.github.io/contact](https://witt1e.github.io/contact)
