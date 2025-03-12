@@ -15,14 +15,17 @@ struct BaseballGame {
     var gameRecords: [Int] = []
     
     mutating func start() {
-        print("게임을 시작합니다. \(numberOfDigits)자리 숫자를 입력하세요.")
+        print("게임을 시작합니다. \(numberOfDigits)자리 숫자를 입력하세요. 도중에 나가려면 qqq 또는 QQQ를 입력하세요.")
         
         let answer = makeAnswer()
         
         // 정답을 맞출 때까지 반복
-        var isCorrect: Bool
+        var isCorrect = false
         repeat {
             let input = readLine()
+            
+            if input == "qqq" || input == "QQQ" { break } // 게임 중간에 빠져나갈 수 있도록
+            
             isCorrect = compare(input, with: answer)
             tryCount += 1
         } while !isCorrect
