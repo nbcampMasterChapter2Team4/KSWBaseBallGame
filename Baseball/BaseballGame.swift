@@ -49,6 +49,16 @@ struct BaseballGame {
         }
         
         return numbers
+        
+        // 강의 로직 적용
+//        let numbers = (0...9).map { $0 }
+//        let shuffledNumbers = numbers.shuffled()
+//        
+//        if shuffledNumbers[0] == 0 {
+//            return [Int](shuffledNumbers[1...3])
+//        } else {
+//            return [Int](shuffledNumbers[0...2])
+//        }
     }
     
     // 플레이어 입력 값과 정답 비교
@@ -65,6 +75,9 @@ struct BaseballGame {
         
         // 입력 값을 정수 배열로 변환(주의: 사용자 입력 값 1A2 -> [1, 2])
         let inputArray = Array(input).compactMap { Int(String($0)) }
+        
+        // 강의 로직 적용
+        // let inputArray = input.map { String($0 )}.compactMap { Int($0) }
         
         // 입력 값이 기준에 맞는지 검증
         let validatedResult = validateInput(inputArray)
@@ -112,7 +125,7 @@ struct BaseballGame {
         case let x where x.count != numberOfDigits:
             return .notThreeDigit(numberOfDigits)
         case let x where x.contains(where: { $0 < numberRange.lowerBound || $0 > numberRange.upperBound }):
-            return .notNumberFromOneToNine(numberRange)
+            return .notNumberFromZeroToNine(numberRange)
         case let x where Set(x).count != x.count:
             return .duplicatedNumber
         default:
